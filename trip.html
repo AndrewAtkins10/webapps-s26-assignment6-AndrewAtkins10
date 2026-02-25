@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Planner</title>
+</head>
+<body>
+
+    <h1>Andrew Atkins travel planner</h1>
+
+    <form>
+        <label>
+            <input type="checkbox" id="cari" value="True"> Caribbean
+        </label><br>
+        <label>
+            <input type="checkbox" id="medi" value="True"> Mediterranean
+        </label><br>
+        <label>
+            <input type="checkbox" id="balt" value="False"> Baltic
+        </label><br><br>
+        
+        <input type="button" onclick="choices()" value="Cruise Choices">
+    </form>
+
+    <hr>
+
+    <form>
+        <label for="startCity">Enter starting city</label>
+        <input type="text" id="startCity" value="Athens"><br>
+
+        <label for="endCity">Enter ending city</label>
+        <input type="text" id="endCity"><br><br>
+
+        <input type="button" onclick="updateTrip()" value="Update the trip">
+    </form>
+
+    <hr>
+
+    <p id="tripResult">Trip details will appear here...</p>
+
+    <script>
+        let my_trip = {};
+
+        function choices() {
+            my_trip = {};
+
+            my_trip.cari = document.getElementById("cari").checked;
+            my_trip.medi = document.getElementById("medi").checked;
+            my_trip.balt = document.getElementById("balt").checked;
+
+            document.getElementById("tripResult").innerHTML = JSON.stringify(my_trip);
+        }
+
+        function updateTrip() {
+            let start = document.getElementById("startCity").value;
+            let end = document.getElementById("endCity").value;
+
+            my_trip["startCity"] = start;
+            my_trip["endCity"] = end;
+
+            document.getElementById("tripResult").innerHTML = JSON.stringify(my_trip);
+        }
+    </script>
+
+</body>
+</html>
