@@ -3,6 +3,7 @@
 <head>
     <title>Villain Tracker</title>
 </head>
+
 <body>
 
     <h1>Villains by Andrew Atkins</h1>
@@ -43,7 +44,29 @@
             // 7d: Update the innerHTML with counts
             out.innerHTML = "Caught: " + caught + " | Got Away: " + gotAway;
         }
+        let usePic = 1;
+        function updatePic() {
+            let img = document.getElementById("treeImg");
+            switch(usePic) {
+            case 1:
+                img.src = "tree2.jpg";
+                usePic = 2;
+                break;
+            case 2:
+                img.src = "tree3.jpg";
+                usePic = 3;
+                break;
+            case 3:
+                img.src = "tree1.jpg";
+                usePic = 1;
+                break;
+            
+    }
+}
     </script>
 
 </body>
 </html>
+<div>
+    <img id="treeImg" src="tree1.jpg" alt="Tree" width="150" height="150" onclick="updatePic()">
+</div>
