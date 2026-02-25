@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Villain Tracker</title>
+</head>
+<body>
+
+    <h1>Villains by Andrew Atkins</h1>
+
+    <form>
+        <label for="secret_villain">Funny Man</label>
+        <input type="password" id="secret_villain" value="Joker"> <br>
+
+        <label for="guess_villain">Guess the villain</label>
+        <input type="text" id="guess_villain"> <br>
+
+        <input type="button" onclick="checkVillain()" value="Check the guess">
+    </form>
+
+    <p id="result">Caught: 0 | Got Away: 0</p>
+
+    <script>
+        // Requirement 6: Global variables initialized to 0
+        let caught = 0;
+        let gotAway = 0;
+
+        // Requirement 7: Function checkVillain()
+        function checkVillain() {
+            // 7a & 7b: Get values from both elements
+            let secret = document.getElementById("secret_villain").value;
+            let guess = document.getElementById("guess_villain").value;
+            let out = document.getElementById("result");
+
+            // 7c: Compare values and update counts/alerts
+            if (secret === guess) {
+                caught = caught + 1;
+                alert("You caught them");
+            } else {
+                gotAway = gotAway + 1;
+                alert("Maybe next time");
+            }
+
+            // 7d: Update the innerHTML with counts
+            out.innerHTML = "Caught: " + caught + " | Got Away: " + gotAway;
+        }
+    </script>
+
+</body>
+</html>
