@@ -1,13 +1,48 @@
 <!DOCTYPE html>
-
 <html>
-<h1>Andrew Atkins tax table computation</h1>
-<form>
-    <label>Enter income</label> <input type="number" id="income" value="5000"><br>
-    <label>Enter the base tax rate</label> <input type="number" id="baseRate" value="0.05"><br>
-    <label>Enter the cut off</label> <input type="number" id="cutoff" value="7500"><br>
-    <label>Enter the extended rate</label> <input type="number" id="extRate" value="0.15"><br>
-    <input type="button" onclick="doTax()" value="Show tax table">
-</form>
-<p id="taxResult"></p>
+<head>
+    <title>Tax Computation</title>
+</head>
+<body>
+
+    <h2>Andrew Atkins tax table</h2>
+
+    <form>
+        <label>Enter income</label> <input type="number" id="income" value="5000"><br>
+        <label>Enter the base tax rate</label> <input type="number" id="baseRate" value="0.05"><br>
+        <label>Enter the cut off</label> <input type="number" id="cutoff" value="7500"><br>
+        <label>Enter the extended rate</label> <input type="number" id="extRate" value="0.15"><br>
+        
+        <input type="button" onclick="doTax()" value="Show tax table">
+    </form>
+
+    <p id="taxResult">Here are your results: </p>
+
+    <script>
+        function doTax() {
+            let income = Number(document.getElementById("income").value);
+            let cutoff = Number(document.getElementById("cutoff").value);
+            let baseRate = Number(document.getElementById("baseRate").value);
+            let extRate = Number(document.getElementById("extRate").value);
+            let taxTable = "";
+
+            for (let i = 1; i <= 5; i++) {
+                let incomeLevel = income * i;
+                let tax = 0;
+
+                // Logic for the progressive tax calculation
+                if (incomeLevel <= cutoff) {
+                    tax = incomeLevel * baseRate;
+                } else {
+                    tax = (cutoff * baseRate) + ((incomeLevel - cutoff) * extRate);
+                }
+                taxTable += `incomeLevel ${incomeLevel} is ${tax}; `;
+            }
+            
+            document.getElementById("taxResult").innerHTML = "Taxes are: " + taxTable;
+        }
+
+    </script>
+
+</body>
 </html>
